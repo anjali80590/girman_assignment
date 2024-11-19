@@ -1,11 +1,7 @@
-
-
-
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
-import search from '../assets/search.png'
+import search from "../assets/search.png";
 const SearchBox = () => {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
@@ -19,8 +15,7 @@ const SearchBox = () => {
   return (
     <div className="search-container">
       <div className="input-wrapper">
-        {/* <FiSearch className="search-icon" /> Icon before the input */}
-        <img src={search} className="search-icon"/>
+        <img src={search} className="search-icon" />
         <input
           type="text"
           className="search-box"

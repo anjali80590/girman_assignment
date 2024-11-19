@@ -1,6 +1,3 @@
-
-
-
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import bigLogo from "../assets/logo.png";
@@ -14,12 +11,10 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      {/* Logo */}
       <div className="logo">
         <img src={bigLogo} alt="Girman Logo" />
       </div>
 
-      {/* Links for Desktop */}
       <div className="links">
         <a href="/" className={location.pathname === "/" ? "active-link" : ""}>
           Search
@@ -41,10 +36,8 @@ const Navbar = () => {
         <a href="mailto:contact@girmantech.com">Contact</a>
       </div>
 
-      {/* Mobile Menu Icon */}
       <FiMenu className="menu-icon" onClick={toggleMenu} />
 
-      {/* Dropdown Menu for Mobile */}
       {menuOpen && (
         <div className="dropdown">
           <a

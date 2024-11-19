@@ -1,7 +1,6 @@
-
 import React, { useState } from "react";
-import placeholder from "../assets/user-placeholder.png"; // Placeholder image
-import image from '../assets/image.png'
+import placeholder from "../assets/user-placeholder.png";
+import image from "../assets/image.png";
 
 const UserDetailsDialog = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,12 +10,10 @@ const UserDetailsDialog = ({ user }) => {
 
   return (
     <>
-      {/* Trigger Button */}
       <button className="fetch-button" onClick={handleOpen}>
         Fetch Details
       </button>
 
-      {/* Modal */}
       {isOpen && (
         <div className="dialog-overlay">
           <div className="dialog-content">

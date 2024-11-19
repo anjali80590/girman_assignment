@@ -1,46 +1,24 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import EmptyImage from "../assets/NoResult.png"; // Path to "No results" image
-import Logo from "../assets/logo.png"; // Path to your logo
-import { FiMenu } from "react-icons/fi"; // Menu icon for mobile
+import EmptyImage from "../assets/NoResult.png";
+import Logo from "../assets/logo.png";
+import { FiMenu } from "react-icons/fi";
 
 const EmptyState = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const query = new URLSearchParams(location.search).get("query"); // Extract query from URL
-  const [menuOpen, setMenuOpen] = useState(false); // State for mobile dropdown menu
-  const dropdownRef = useRef(null); // Ref for dropdown menu
-
-  // Close dropdown if clicked outside
+  const query = new URLSearchParams(location.search).get("query");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const dropdownRef = useRef(null);
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setMenuOpen(false); // Close dropdown
+        setMenuOpen(false);
       }
     };
 
-    // Add event listener to document
     document.addEventListener("mousedown", handleClickOutside);
 
-    // Cleanup the event listener on component unmount
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -48,7 +26,7 @@ const EmptyState = () => {
 
   const handleSearch = (e) => {
     if (e.key === "Enter" && e.target.value.trim() !== "") {
-      navigate(`/search-results?query=${e.target.value.trim()}`); // Navigate to search-results with the new query
+      navigate(`/search-results?query=${e.target.value.trim()}`);
     }
   };
 
@@ -56,7 +34,6 @@ const EmptyState = () => {
 
   return (
     <div className="empty-state-page">
-      {/* Navbar with logo and search box */}
       <div className="search-result-navbar">
         <div className="logo">
           <img className="navbar-logo" src={Logo} alt="Girman Logo" />
@@ -67,18 +44,16 @@ const EmptyState = () => {
             className="navbar-searchbox"
             type="text"
             placeholder="Search"
-            defaultValue={query || ""} // Show the query in the search bar
+            defaultValue={query || ""}
             onKeyDown={handleSearch}
           />
           <button onClick={() => navigate("/")} className="back">
             Back
           </button>
 
-          {/* Mobile Menu Icon */}
           <FiMenu className="menu-icon" onClick={toggleMenu} />
         </div>
 
-        {/* Mobile Dropdown Menu */}
         {menuOpen && (
           <div ref={dropdownRef} className="dropdown">
             <a
@@ -106,7 +81,6 @@ const EmptyState = () => {
         )}
       </div>
 
-      {/* Empty State Content */}
       <div className="empty-state-content">
         <img className="empty-image" src={EmptyImage} alt="No results found" />
       </div>

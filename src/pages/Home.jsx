@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import SearchBox from "../components/SearchBox";
-import Logo from "../assets/Biglogo.png"; // Path to your logo image
+import Logo from "../assets/Biglogo.png"; 
 import girman from "../assets/girman.png";
 const Home = () => {
   return (
